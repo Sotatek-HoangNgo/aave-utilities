@@ -5,13 +5,10 @@
   "description": "",
   "scripts": {
     "clean": "cd ../.. && npx rimraf packages/math-utils/dist packages/math-utils/*.log*",
-    "lint": "cd ../.. && eslint packages/math-utils/src/**/*.ts",
-    "check-types": "npm run build -- --noEmit",
     "prebuild": "npm run clean",
     "build": "cd ../.. && tsc -p packages/math-utils/tsconfig.json && npx tsc -p packages/math-utils/tsconfig.json --module commonjs --outDir ./packages/math-utils/dist/cjs",
     "test": "cd ../.. && yarn test packages/math-utils",
     "cover": "cd ../.. && yarn cover packages/math-utils",
-    "commit": "cd ../.. && yarn commit",
     "prepublishOnly": "yarn build"
   },
   "keywords": [
@@ -32,11 +29,12 @@
     "access": "public"
   },
   "peerDependencies": {
-    "bignumber.js": "^9.x",
     "tslib": "^2.4.x"
   },
+  "dependencies": {
+    "bignumber.js": "file:../../lib/bignumber.js"
+  },
   "devDependencies": {
-    "bignumber.js": "^9.1",
     "tslib": "^2.4.0"
   },
   "repository": {

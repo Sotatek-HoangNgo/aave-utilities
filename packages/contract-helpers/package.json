@@ -6,18 +6,14 @@
   "description": "",
   "scripts": {
     "clean": "cd ../.. && npx rimraf packages/contract-helpers/dist packages/math-utils/*.log*",
-    "lint": "cd ../.. && eslint packages/contract-helpers/src/**/*.ts",
-    "check-types": "yarn build -- --noEmit",
     "prebuild": "npm run clean",
     "build": "cd ../.. && tsc -p packages/contract-helpers/tsconfig.json && tsc -p packages/contract-helpers/tsconfig.json --module commonjs --outDir ./packages/contract-helpers/dist/cjs",
     "test": "cd ../.. && yarn test packages/contract-helpers",
     "test:watch": "cd ../.. && yarn test --watch packages/contract-helpers",
     "cover": "cd ../.. && yarn cover packages/contract-helpers",
-    "commit": "cd ../.. && yarn commit",
     "prepublishOnly": "yarn build"
   },
   "peerDependencies": {
-    "bignumber.js": "^9.x",
     "ethers": "^5.x",
     "reflect-metadata": "^0.1.x",
     "tslib": "^2.4.x"
@@ -27,7 +23,8 @@
     "reflect-metadata": "^0.1.13"
   },
   "dependencies": {
-    "isomorphic-unfetch": "^3.1.0"
+    "isomorphic-unfetch": "^3.1.0",
+    "bignumber.js": "file:../../lib/bignumber.js"
   },
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
